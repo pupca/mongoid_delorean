@@ -63,6 +63,7 @@ module Mongoid
         old_version = self.versions.where(version: version).first
         if old_version
           old_version.full_attributes.each do |key, value|
+            next if key == "comments"
             self.write_attribute(key, value)
           end
           self.save!
