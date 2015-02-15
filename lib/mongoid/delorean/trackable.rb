@@ -91,7 +91,7 @@ module Mongoid
         def changes_with_relations
           _changes = self.changes.dup
 
-          %w{version updated_at created_at}.each do |col|
+          %w{version updated_at created_at article_frames comments related_article_ids last_change_at survey_questions}.each do |col|
             _changes.delete(col)
             _changes.delete(col.to_sym)
           end
