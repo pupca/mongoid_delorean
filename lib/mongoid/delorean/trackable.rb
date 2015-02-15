@@ -91,13 +91,14 @@ module Mongoid
         def changes_with_relations
           _changes = self.changes.dup
 
-          %w{version updated_at created_at article_frames comments related_article_ids last_change_at survey_questions}.each do |col|
+          %w{version updated_at created_at last_change_at}.each do |col|
             _changes.delete(col)
             _changes.delete(col.to_sym)
           end
 
           relation_changes = {}
           self.embedded_relations.each do |name, details|
+            next if name == "article_frames" || name == "comments" || name == "related_article_ids" || name == "survey_questions"
             relation = self.send(name)
             relation_changes[name] = []
             if details.relation == Mongoid::Relations::Embedded::One
