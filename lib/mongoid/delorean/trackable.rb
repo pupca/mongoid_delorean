@@ -23,6 +23,7 @@ module Mongoid
           _attributes.merge!("version" => _version)
           _changes = self.changes_with_relations.dup
           _changes.merge!("version" => [self.version_was, _version])
+          return true if (_changes.has_key?("version") && _changes.size == 1)
 
           Mongoid::Delorean::History.create(original_class: self.class.name, original_class_id: self.id, version: _version, altered_attributes: _changes, full_attributes: _attributes)
           self.without_history_tracking do
