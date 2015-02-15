@@ -1,6 +1,6 @@
 # Mongoid::Delorean
 
-[![Build Status](https://travis-ci.org/crafters/mongoid_delorean.svg?branch=master)](https://travis-ci.org/crafters/mongoid_delorean)
+*Do not use, for my private purposes only. Thanks!*
 
 A simple Mongoid 3 and 4 versioning system that works with embedded documents.
 
